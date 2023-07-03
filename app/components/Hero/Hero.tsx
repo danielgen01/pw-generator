@@ -1,6 +1,7 @@
 import React from "react"
 import { IoReload } from "react-icons/io5"
 import { AiOutlineCopy } from "react-icons/ai"
+import Slider from "./Slider"
 
 const Hero: React.FC = () => {
 	return (
@@ -20,6 +21,11 @@ const Hero: React.FC = () => {
 			<button className="uppercase bg-neon-yellow w-full h-24 text-black text-xl font-semibold tracking-[3.2px] flex justify-between items-center px-10 rounded-bl-3xl hover:opacity-75 duration-150">
 				copy password_ <AiOutlineCopy className="text-2xl" />
 			</button>
+
+                <div className="range-slider w-full">
+                    <Slider />
+                </div>
+           
 		</section>
 	)
 }

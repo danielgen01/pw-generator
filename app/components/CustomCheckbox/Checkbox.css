@@ -1,0 +1,23 @@
+.checkbox {
+    display: inline-flex;
+    align-items: center;
+    cursor: pointer;
+  }
+  
+  .checkbox input[type="checkbox"] {
+    appearance: none;
+  }
+  
+  .checkbox-custom {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    border: 2px solid #F8EF00; /* Beispiel: Ändere die Farbe nach deinen Wünschen */
+    border-radius: 4px;
+    background-color: transparent;
+  }
+  
+  .checkbox-custom--checked {
+    background-color: #F8EF00; /* Beispiel: Ändere die Farbe nach deinen Wünschen */
+  }
+  

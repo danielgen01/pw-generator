@@ -34,8 +34,8 @@ const Hero: React.FC = () => {
 			</div>
 
 			<div className="checkboxes grid grid-cols-2 w-full gap-10 ">
-				<CheckBox label="uppercase letters" onChange={handleCheckboxChange} />
-				<CheckBox label="lowercase letters" onChange={handleCheckboxChange} />
+				<CheckBox label="uppercase" onChange={handleCheckboxChange} />
+				<CheckBox label="lowercase" onChange={handleCheckboxChange} />
 				<CheckBox label="Numbers" onChange={handleCheckboxChange} />
 				<CheckBox label="Symbols" onChange={handleCheckboxChange} />
 			</div>

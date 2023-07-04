@@ -12,7 +12,7 @@ const Hero: React.FC = () => {
 	}
 
 	return (
-		<section className="px-10 py-10 flex flex-col items-start gap-10">
+		<section className="px-10 py-10 flex flex-col items-start gap-10 lg:col-span-2">
 			<div className="generated-passwort h-20 bg-[#00F0FF19] border-bright-aque border-2 outline-none px-10 flex items-center justify-between w-full  rounded-md">
 				<input
 					type="text"

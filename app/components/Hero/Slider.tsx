@@ -1,11 +1,14 @@
 "use client"
 import React, { ChangeEvent, useState } from "react"
 
-const Slider = () => {
-	const [value, setValue] = useState(10)
+type sliderProps = {
+	setSliderValue:any
+	sliderValue:number
+}
+const Slider:React.FC<sliderProps> = ({sliderValue, setSliderValue}) => {
 
 	const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
-		setValue(Number(event.target.value))
+		setSliderValue(Number(event.target.value))
 	}
 
 	return (
@@ -14,11 +17,11 @@ const Slider = () => {
 				type="range"
 				min="0"
 				max="50"
-				value={value}
+				value={sliderValue}
 				onChange={handleChange}
 				className="w-full appearance-none bg-bright-aque h-1 rounded-lg outline-none thumb-red-500 thumb-w-6 thumb-h-6 thumb-rounded-full "
 			/>
-			<p>Value: {value}</p>
+			<p>Value: {sliderValue}</p>
 		</div>
 	)
 }

@@ -63,6 +63,16 @@ const Hero: React.FC = () => {
 		}
 	}
 
+	const handleCopyPassword = () => {
+		navigator.clipboard.writeText(generatedPassword)
+		  .then(() => {
+			console.log("Password copied to clipboard");
+		  })
+		  .catch((error) => {
+			console.error("Failed to copy password:", error);
+		  });
+	  }
+
 	return (
 		<section className="px-10 py-10 flex flex-col items-start gap-10 lg:col-span-2">
 			<div className="generated-passwort h-20 bg-[#00F0FF19] border-bright-aque border-2 outline-none px-10 flex items-center justify-between w-full  rounded-md">
@@ -82,7 +92,7 @@ const Hero: React.FC = () => {
 				</div>
 			</div>
 
-			<button className="uppercase bg-neon-yellow w-full h-24 text-black text-xl font-semibold tracking-[3.2px] flex justify-between items-center px-10 rounded-bl-3xl hover:opacity-75 duration-150">
+			<button className="uppercase bg-neon-yellow w-full h-24 text-black text-xl font-semibold tracking-[3.2px] flex justify-between items-center px-10 rounded-bl-3xl hover:opacity-75 duration-150"onClick={handleCopyPassword}>
 				copy password_ <AiOutlineCopy className="text-2xl" />
 			</button>
 

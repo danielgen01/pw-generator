@@ -7,12 +7,32 @@ import CheckBox from "../CustomCheckbox/CheckBox"
 import axios from "axios"
 
 const Hero: React.FC = () => {
-	const handleCheckboxChange = (checked: boolean) => {
-		// Hier kannst du den aktualisierten Status der Checkbox verwenden
-		console.log("Checkbox toggled:", checked)
+	const handleCheckboxChange = (label: string, checked: boolean) => {
+		// Aktualisiere den Zustand für jede Checkbox basierend auf dem Label
+		switch (label) {
+			case "uppercase":
+				setUppercaseChecked(checked)
+				break
+			case "lowercase":
+				setLowercaseChecked(checked)
+				break
+			case "Numbers":
+				setNumbersChecked(checked)
+				break
+			case "Symbols":
+				setSymbolsChecked(checked)
+				break
+			default:
+				break
+		}
 	}
+
 	const [generatedPassword, setGeneratedPassword] = useState("")
 	const [sliderValue, setSliderValue] = useState(10)
+	const [uppercaseChecked, setUppercaseChecked] = useState(false)
+	const [lowercaseChecked, setLowercaseChecked] = useState(false)
+	const [numbersChecked, setNumbersChecked] = useState(false)
+	const [symbolsChecked, setSymbolsChecked] = useState(false)
 
 	const options = {
 		method: "POST",
@@ -24,10 +44,10 @@ const Hero: React.FC = () => {
 		},
 		data: {
 			length: sliderValue,
-			numbers: true,
-			symbols: false,
-			lowercase: true,
-			uppercase: true,
+			numbers: numbersChecked,
+			symbols: symbolsChecked,
+			lowercase: lowercaseChecked,
+			uppercase: uppercaseChecked,
 			excludeSimilarCharacters: false,
 			exclude: "1",
 			strict: false,
@@ -39,7 +59,7 @@ const Hero: React.FC = () => {
 			const response = await axios.request(options)
 			setGeneratedPassword(response.data.password)
 		} catch (error) {
-			alert(error)
+			alert(`${error} PLEASE TICK THE NEEDED CHECKBOXES`)
 		}
 	}
 
@@ -70,11 +90,23 @@ const Hero: React.FC = () => {
 				<Slider sliderValue={sliderValue} setSliderValue={setSliderValue} />
 			</div>
 
-			<div className="checkboxes grid grid-cols-2 w-full gap-10 ">
-				<CheckBox label="uppercase" onChange={handleCheckboxChange} />
-				<CheckBox label="lowercase" onChange={handleCheckboxChange} />
-				<CheckBox label="Numbers" onChange={handleCheckboxChange} />
-				<CheckBox label="Symbols" onChange={handleCheckboxChange} />
+			<div className="checkboxes grid grid-cols-2 w-full gap-10">
+				<CheckBox
+					label="uppercase"
+					onChange={(checked) => handleCheckboxChange("uppercase", checked)}
+				/>
+				<CheckBox
+					label="lowercase"
+					onChange={(checked) => handleCheckboxChange("lowercase", checked)}
+				/>
+				<CheckBox
+					label="Numbers"
+					onChange={(checked) => handleCheckboxChange("Numbers", checked)}
+				/>
+				<CheckBox
+					label="Symbols"
+					onChange={(checked) => handleCheckboxChange("Symbols", checked)}
+				/>
 			</div>
 		</section>
 	)
